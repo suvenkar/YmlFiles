@@ -15,6 +15,6 @@ spec:
         - name: jenkins
           image: jenkins
   replicas: 3
-  selectors:
+  selector:
     matchLabels:
-      app: Jenkins
+      app: jenkins
