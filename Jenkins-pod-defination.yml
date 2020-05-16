@@ -1,0 +1,10 @@
+appVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-pod
+  lables:
+    app: jenkins
+spec:
+  containers:
+    -name: jenkins
+    image: jenkins
