@@ -1,4 +1,4 @@
-appVersion: v1
+apiVersion: v1
 kind: Pod
 metadata:
   name: jenkins-pod
@@ -6,5 +6,5 @@ metadata:
     app: jenkins
 spec:
   containers:
-    -name: jenkins
+    - name: jenkins
     image: jenkins
