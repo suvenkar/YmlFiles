@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira-deployments
+  labels:
+    app: Jira
+spec:
+  template:
+    metadata:
+      name: jira-pod
+      labels:
+        app: jira
+    spec:
+      containers:
+        - name: jira
+          image: haxqer/jira
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jira
