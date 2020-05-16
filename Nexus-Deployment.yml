@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus-deployments
+  labels:
+    app: Nexus
+spec:
+  template:
+    metadata:
+      name: nexus-pod
+      labels:
+        app: nexus
+    spec:
+      containers:
+        - name: nexus
+          image: sonatype/nexus
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nexus
