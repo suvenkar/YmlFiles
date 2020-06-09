@@ -2,13 +2,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata: 
-  name: jenkins-ci
+  name: jenkins-pod
 spec: 
   replicas: 1
   template: 
     metadata: 
       labels: 
-        name: jenkins-ci
+        name: jenkins-pod
     spec: 
       containers: 
         - 
