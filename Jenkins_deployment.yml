@@ -8,7 +8,7 @@ spec:
   template:
     metadata:
       name: jenkins-pod
-      lables:
+      labels:
         app: jenkins
     spec:
       containers:
