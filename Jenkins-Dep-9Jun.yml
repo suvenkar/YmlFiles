@@ -14,7 +14,7 @@ spec:
         - 
           image: "suvenkar/jenkins:5"
           imagePullPolicy: Always
-          name: jenkins-ci
+          name: jenkins-pod
           ports: 
             - 
               containerPort: 8080
