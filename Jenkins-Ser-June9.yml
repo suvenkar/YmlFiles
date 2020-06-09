@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-ci-lb
+spec:
+ type: LoadBalancer
+ ports:
+   - name: jenkins
+     port: 8080
+     targetPort: 8080
+   - name: jenkins-agent
+     port: 50000
+     targetPort: 50000
+ selector:
+   name: jenkins-ci
