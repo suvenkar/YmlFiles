@@ -1,48 +1,26 @@
---- 
 apiVersion: extensions/v1beta1
 kind: Deployment
-metadata: 
-  name: jenkins-pod
-spec: 
-  replicas: 1
-  template: 
-    metadata: 
-      labels: 
-        name: jenkins-pod
-    spec: 
-      containers: 
-        - 
-          image: "suvenkar/jenkins:5"
-          imagePullPolicy: Always
-          name: jenkins-pod
-          ports: 
-            - 
-              containerPort: 8080
-            - 
-              containerPort: 50000
-          readinessProbe: 
-            initialDelaySeconds: 40
-            periodSeconds: 20
-            tcpSocket: 
-              port: 8080
-          securityContext: 
-            privileged: true
-          volumeMounts: 
-            - 
-              mountPath: /var/run
-              name: docker-sock
-            - 
-              mountPath: /var/jenkins_home
-              name: jenkins-home
-      imagePullSecrets: 
-        - 
-          name: regsecret
-      volumes: 
-        - 
-          hostPath: 
-            path: /var/run
-          name: docker-sock
-        - 
-          hostPath: 
-            path: /var/jenkins_home
-          name: jenkins-home
+metadata:
+  name: jenkins-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      name: jenkins-pod
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - name: jenkins
+          image: suvenkar/jenkins:5
+          ports:
+            - containerPort: 8080
+volumeMounts:
+  - name: jenkins-home
+    mountPath: /var/jenkins_home
+  volumes:
+    - name: jenkins-home
+      emptyDir: {}
