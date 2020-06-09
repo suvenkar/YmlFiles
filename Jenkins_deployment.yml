@@ -17,4 +17,4 @@ spec:
   replicas: 3
   selectors:
     matchLabels:
-      app: Jenkins
+      app: jenkins
