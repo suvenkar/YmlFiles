@@ -12,8 +12,8 @@ spec:
         app: jenkins
     spec:
       containers:
-        -name: jenkins
-        image: suvenkar/jenkins:5
+        - name: jenkins
+          image: suvenkar/jenkins:5
   replicas: 2
   selectors:
     matchLabels:
