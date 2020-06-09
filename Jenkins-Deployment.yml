@@ -14,6 +14,16 @@ spec:
       containers:
         - name: jenkins
           image: jenkins
+          
+      volumes: 
+        - 
+          hostPath: 
+            path: /var/run
+          name: docker-sock
+        - 
+          hostPath: 
+            path: /var/jenkins_home
+          name: jenkins-home
   replicas: 3
   selector:
     matchLabels:
