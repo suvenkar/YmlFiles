@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-deployment
@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         -name: jenkins
-        image: jenkins
+        image: suvenkar/jenkins:5
   replicas: 3
   selectors:
     matchLabels:
