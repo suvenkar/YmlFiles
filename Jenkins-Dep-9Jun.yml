@@ -1,4 +1,3 @@
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -10,22 +9,15 @@ spec:
       app: jenkins
   template:
     metadata:
+      name: jenkins-pod
       labels:
         app: jenkins
-      name: jenkins-pod
     spec:
       containers:
-        -
-          image: "suvenkar/jenkins:5"
-          name: jenkins
+        - name: jenkins
+          image: suvenkar/jenkins:5
           ports:
-            -
-              containerPort: 8080
-volumeMounts:
-  -
-    mountPath: /var/jenkins_home
-    name: jenkins-home
-    volumes:
-      -
-        emptyDir: {}
-        name: jenkins-home
+            - containerPort: 8080
+      volumes:
+        - name: jenkins-home
+          emptyDir: {}
