@@ -3,24 +3,23 @@ kind: Deployment
 metadata:
   name: jenkins-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: jenkins
   template:
     metadata:
-      name: jenkins-pod
       labels:
         app: jenkins
     spec:
       containers:
         - name: jenkins
-          image: suvenkar/jenkins:5
+          image: jenkins/jenkins:lts
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - name: jenkins-home
-              mountPath: /var/jenkins_home
-      volumes:
+      volumeMounts:
         - name: jenkins-home
-          emptyDir: {}
+          mountPath: /var/jenkins_home
+  volumes:
+    - name: jenkins-home
+      emptyDir: {}
