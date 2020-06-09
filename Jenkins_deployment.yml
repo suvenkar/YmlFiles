@@ -15,6 +15,6 @@ spec:
         - name: jenkins
           image: suvenkar/jenkins:5
   replicas: 2
-  selectors:
+  selector:
     matchLabels:
       app: jenkins
